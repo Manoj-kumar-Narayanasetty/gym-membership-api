@@ -6,7 +6,7 @@ describe('Gym Membership API', () => {
 
     it('should register a new member', async () => {
         const res = await request(app).post('/register').send(testMember);
-        expect(res.status).toBe(200);
+        expect(res.status).toBe(201);
         expect(res.body.member.email).toBe(testMember.email);
     });
 

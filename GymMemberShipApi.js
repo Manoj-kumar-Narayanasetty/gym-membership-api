@@ -17,7 +17,7 @@ app.post('/register', (req, res) => {
     
     const newMember = { name, email, startDate };
     members.push(newMember);
-    res.status(200).json({ message: 'Membership registered successfully', member: newMember });
+    res.status(201).json({ message: 'Membership registered successfully', member: newMember });
 });
 
 // View membership details
