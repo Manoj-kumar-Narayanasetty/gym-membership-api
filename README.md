@@ -1,29 +1,25 @@
 
 # Gym Membership API
+A Simple Gym Membership Management API using Node.js & Express.js
 
-This is a simple Gym Membership Management API built using Node.js and Express.js.
+# API's
+1. Register a new gym membership
+2. View membership details
+3. View all active members
+4. Cancel membership
+5. Modify membership start date
 
-## Features
-- Register a new gym membership
-- View membership details
-- View all active members
-- Cancel membership
-- Modify membership start date
+# API Endpoints
+ `POST /register` - Register a new member
+ `GET /membership` - View membership details
+ `GET /members` - View all active members
+ `DELETE /cancel` - Cancel membership
+ `PUT /modify` - Modify membership start date
 
-## Installation
-```sh
+# command Instal all dependencies
 npm install
-```
 
-## Running the Server
-```sh
+# command to run the Server
 npm start
-```
 
-## API Endpoints
-- `POST /register` - Register a new member
-- `GET /membership` - View membership details
-- `GET /members` - View all active members
-- `DELETE /cancel` - Cancel membership
-- `PUT /modify` - Modify membership start date
 

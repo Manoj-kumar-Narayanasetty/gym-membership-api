@@ -5,8 +5,8 @@ const port = 3000;
 
 app.use(express.json());
 
-// In-memory storage for gym memberships
-let members = [];
+
+let members = []; // list to store gym members
 
 // Register a new gym membership
 app.post('/register', (req, res) => {
@@ -17,7 +17,7 @@ app.post('/register', (req, res) => {
     
     const newMember = { name, email, startDate };
     members.push(newMember);
-    res.json({ message: 'Membership registered successfully', member: newMember });
+    res.status(200).json({ message: 'Membership registered successfully', member: newMember });
 });
 
 // View membership details
@@ -26,12 +26,14 @@ app.get('/membership', (req, res) => {
     const member = members.find(m => m.email === email);
     
     if (!member) return res.status(404).json({ message: 'Member not found' });
-    res.json(member);
+    res.status(200).json(member);
 });
 
 // View all active members
 app.get('/members', (req, res) => {
-    res.json(members);
+    const today = new Date().toISOString().split('T')[0]; //date in YYYY-MM-DD
+    const activeMembers = members.filter(member => member.startDate <= today);
+    res.status(200).json(activeMembers.map(({ name, email }) => ({ name, email })));
 });
 
 // Cancel membership
@@ -42,7 +44,7 @@ app.delete('/cancel', (req, res) => {
     if (index === -1) return res.status(404).json({ message: 'Member not found' });
     
     members.splice(index, 1);
-    res.json({ message: 'Membership canceled successfully' });
+    res.status(200).json({ message: 'Membership canceled successfully' });
 });
 
 // Modify membership start date
@@ -53,7 +55,7 @@ app.put('/modify', (req, res) => {
     if (!member) return res.status(404).json({ message: 'Member not found' });
     
     member.startDate = newStartDate;
-    res.json({ message: 'Membership start date modified successfully', member });
+    res.status(200).json({ message: 'Membership start date modified successfully', member });
 });
 
 if (require.main === module) {

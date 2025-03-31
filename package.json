@@ -7,9 +7,9 @@
     "test": "jest"
   },
   "keywords": [],
-  "author": "",
+  "author": "Manoj Kumar Narayanasetty",
   "license": "ISC",
-  "description": "",
+  "description": "Gym Membership API for managing gym members",
   "dependencies": {
     "express": "^4.21.2",
     "jest": "^29.7.0",
